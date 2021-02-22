@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %} {% block content %}
+  <h1>{{ title }}</h1>
+  <table class="m-token-list">
+    <thead>
+      <tr>
+        <th>Shadow</th>
+        <th>Token</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for shadow in shadows %}
+        <tr class="m-token">
+          <td>
+            <div class="m-token__preview" style="box-shadow: var({{ shadow.name | replace('E', '--e') }});"></div>
+          </td>
+          <td>
+            <span class="m-token__name">{{ shadow.name }}</span>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

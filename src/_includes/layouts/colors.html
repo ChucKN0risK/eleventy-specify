@@ -1,0 +1,36 @@
+{% extends "layouts/base.html" %} {% block content %}
+  <h1>{{ title }}</h1>
+  <table class="m-token-list">
+    <thead>
+      <tr>
+        <th>Color</th>
+        <th>Token</th>
+        <th>Family</th>
+        <th>Grade</th>
+        <th>Hex</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for color in colors %}
+        <tr class="m-token">
+          <td>
+            <div class="m-token__preview" style="background-color: rgba({{ color.value.r }}, {{ color.value.b }}, {{ color.value.g }}, {{ color.value.a }});"></div>
+          </td>
+          <td>
+            <span class="u-font-family:monospace">{{ color.name | replace('Colors / ', '')}}</span>
+          </td>
+          <td>
+            <span class="m-token__info">/ (Family)</span>
+          </td>
+          <td>
+            <span class="m-token__info">/ (Grade)</span>
+          </td>
+          <td>
+            <span class="u-font-family:monospace">{{ helpers.getFormattedColor(color, 'hex6') | safe }}</span>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
